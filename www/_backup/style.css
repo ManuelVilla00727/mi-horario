@@ -1,0 +1,733 @@
+/* ============================================================
+   RESET Y ESTILOS BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f5f7;
+  color: #1c1c1e;
+  padding: 16px;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+header h1 {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#btn-refrescar {
+  background: white;
+  border: 1px solid #d1d1d6;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.ciclo {
+  font-size: 13px;
+  color: #1976d2;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   TARJETAS DE ESTADO
+   ============================================================ */
+.tarjeta-actual,
+.tarjeta-proxima {
+  border-radius: 14px;
+  padding: 16px;
+  color: white;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-actual {
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+}
+
+.tarjeta-proxima {
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+}
+
+.tarjeta-actual .titulo,
+.tarjeta-proxima .titulo {
+  font-weight: bold;
+  font-size: 12px;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+.tarjeta-actual .materia,
+.tarjeta-proxima .materia {
+  font-size: 16px;
+  margin: 6px 0;
+  line-height: 1.3;
+}
+
+.tarjeta-actual .hora,
+.tarjeta-proxima .hora {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.tema-tarjeta {
+  font-size: 13px;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   SELECTOR DE DÍAS
+   ============================================================ */
+.selector-dias {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  margin: 16px 0;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.selector-dias::-webkit-scrollbar {
+  display: none;
+}
+
+.selector-dias button {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid #d1d1d6;
+  background: white;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.selector-dias button.activo {
+  background: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+/* ============================================================
+   LISTA DE CLASES
+   ============================================================ */
+.clase {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid #1976d2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.clase.en-curso {
+  background: #ffebee;
+  border-left-color: #d32f2f;
+  box-shadow: 0 3px 10px rgba(211, 47, 47, 0.2);
+}
+
+.clase.clickable {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.clase.clickable:active {
+  background: #f0f0f5;
+}
+
+.clase .hora-bloque {
+  text-align: center;
+  min-width: 60px;
+}
+
+.clase .hora-bloque .h {
+  font-weight: bold;
+  color: #1976d2;
+  font-size: 15px;
+}
+
+.clase .hora-bloque .h2 {
+  font-size: 12px;
+  color: #888;
+}
+
+.clase .info {
+  flex: 1;
+}
+
+.clase .info .materia {
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.clase .info .badge {
+  display: inline-block;
+  background: #d32f2f;
+  color: white;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+.tema-clase {
+  font-size: 12px;
+  color: #1976d2;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.vacio {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+  font-size: 15px;
+}
+
+/* ============================================================
+   BOTONES PRINCIPALES
+   ============================================================ */
+.btn-recordatorios {
+  width: 100%;
+  padding: 14px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.btn-recordatorios.activo {
+  background: #388e3c;
+}
+
+.btn-voz-test {
+  width: 100%;
+  padding: 12px;
+  background: #f5f5f7;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-voz-test:active {
+  background: #e3f2fd;
+}
+
+.btn-secundario {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #666;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* ============================================================
+   BOTÓN FLOTANTE SISTEMA UTC
+   ============================================================ */
+.btn-sistema-utc {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  color: white;
+  border: none;
+  font-size: 11px;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.5);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  padding: 4px;
+  transition: transform 0.15s;
+}
+
+.btn-sistema-utc:active {
+  transform: scale(0.92);
+}
+
+/* ============================================================
+   MODALES GENERALES
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-contenido {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalIn 0.2s ease-out;
+}
+
+.modal-grande {
+  max-width: 600px;
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f0f0f5;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-materia {
+  font-size: 17px;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  padding-right: 40px;
+}
+
+.modal-detalle {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-seccion {
+  margin-bottom: 16px;
+}
+
+.modal-titulo-seccion {
+  font-size: 12px;
+  font-weight: bold;
+  color: #888;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.modal-tema {
+  font-size: 16px;
+  color: #1976d2;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.modal-horas {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.hora-item {
+  flex: 1;
+  background: #f5f5f7;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.hora-icono {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.hora-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.hora-valor {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1976d2;
+}
+
+.modal-info-sin-tema {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #856404;
+}
+
+.modal-subtitulo {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   MODAL SISTEMA UTC (WEBVIEW)
+   ============================================================ */
+#modal-sistema {
+  padding: 0 !important;
+  align-items: stretch !important;
+}
+
+.modal-sistema-contenido {
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-sistema-header {
+  background: #1976d2;
+  color: white;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 15px;
+  z-index: 10;
+}
+
+.modal-cerrar-x {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iframe-sistema {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #f5f5f7;
+}
+
+/* ============================================================
+   PLANIFICACIÓN 16 SEMANAS
+   ============================================================ */
+.plan-materia {
+  font-size: 14px;
+  color: #1976d2;
+  margin: 16px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #1976d2;
+}
+
+.plan-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.plan-semana {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: #f9f9fb;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.plan-semana.plan-actual {
+  background: #e3f2fd;
+  border-left: 4px solid #1976d2;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.15);
+}
+
+.plan-s {
+  font-weight: bold;
+  color: #1976d2;
+  min-width: 32px;
+  font-size: 14px;
+}
+
+.plan-info {
+  flex: 1;
+}
+
+.plan-tema {
+  color: #333;
+  line-height: 1.3;
+}
+
+.plan-rango {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.plan-horas {
+  font-size: 11px;
+  color: #1976d2;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   UPLOAD AREA (SUBIR ARCHIVOS)
+   ============================================================ */
+.upload-area {
+  text-align: center;
+  padding: 24px;
+  background: #f9f9fb;
+  border: 2px dashed #1976d2;
+  border-radius: 12px;
+  margin: 16px 0;
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #1976d2;
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.upload-btn:active {
+  background: #1565c0;
+}
+
+.upload-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 12px;
+}
+
+.upload-success {
+  padding: 14px;
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.upload-fecha {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   SÍLABOS
+   ============================================================ */
+.lista-silabos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.silabo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #eee;
+  background: white;
+}
+
+.silabo-item.subido {
+  background: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.silabo-item.pendiente {
+  background: #fff8e1;
+  border-color: #ffc107;
+}
+
+.silabo-icono {
+  font-size: 24px;
+}
+
+.silabo-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.silabo-materia {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.silabo-estado {
+  font-size: 11px;
+  color: #4caf50;
+}
+
+.silabo-estado.pendiente {
+  color: #f57c00;
+}
+
+.silabo-acciones {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-icono {
+  background: white;
+  border: 1px solid #ddd;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-subir {
+  background: #1976d2;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   CHECK LIST
+   ============================================================ */
+.checklist-contenido {
+  margin-top: 16px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.check-item:last-child {
+  border-bottom: none;
+}
+
+.check-box {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.check-texto {
+  flex: 1;
+}
+
+.check-titulo {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.check-estado {
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.check-estado.ok {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.check-estado.pendiente {
+  color: #f57c00;
+  font-weight: 600;
+}
+
+.check-resumen {
+  padding: 12px;
+  background: #e3f2fd;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #1976d2;
+}

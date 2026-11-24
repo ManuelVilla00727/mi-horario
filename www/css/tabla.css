@@ -1,0 +1,77 @@
+.tabla-horario {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.tabla-horario th {
+    background: #2d3748;
+    color: white;
+    padding: 10px 6px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-horario td {
+    border: 1px solid #e2e8f0;
+    padding: 6px;
+    vertical-align: top;
+    font-size: 0.75rem;
+}
+
+.tabla-horario td.hora {
+    background: #edf2f7;
+    font-weight: 600;
+    text-align: center;
+    width: 60px;
+}
+
+.tabla-horario td.vacio { background: #fafafa; }
+
+.tabla-horario td.materia {
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    color: white;
+    border-radius: 4px;
+    padding: 8px;
+    line-height: 1.3;
+    transition: transform 0.15s;
+}
+
+.tabla-horario td.materia.clickeable { cursor: pointer; }
+.tabla-horario td.materia.clickeable:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tabla-horario td.materia strong { display: block; margin-bottom: 3px; font-size: 0.75rem; }
+.tabla-horario td.materia small { opacity: 0.85; font-size: 0.7rem; }
+
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    margin-top: 4px;
+}
+
+.badge-silabo { background: #38a169; color: white; }
+.badge-sin { background: #a0aec0; color: white; }
+/* ============================================================
+   TEMA DE LA SEMANA EN LA CELDA DEL HORARIO
+   ============================================================ */
+.tema-celda {
+    font-size: 10px;
+    color: #e3f2fd;
+    background: rgba(25, 118, 210, 0.4);
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+    line-height: 1.2;
+    font-style: italic;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

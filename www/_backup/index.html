@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1976d2" />
+  <title>Mi Horario Docente</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header>
+    <div>
+      <h1>📅 Mi Horario</h1>
+      <p id="estado-ciclo" class="ciclo"></p>
+    </div>
+    <button id="btn-refrescar" title="Refrescar">🔄</button>
+  </header>
+
+  <!-- ============================================================
+       TARJETAS DE ESTADO
+       ============================================================ -->
+  <div id="tarjeta-actual"></div>
+  <div id="tarjeta-proxima"></div>
+
+  <!-- ============================================================
+       SELECTOR DE DÍAS Y LISTA DE CLASES
+       ============================================================ -->
+  <div class="selector-dias" id="selector-dias"></div>
+  <div id="lista-clases"></div>
+
+  <!-- ============================================================
+       BOTONES PRINCIPALES
+       ============================================================ -->
+  <button class="btn-recordatorios" id="btn-recordatorios">
+    🔔 Activar recordatorios con voz
+  </button>
+
+  <button class="btn-voz-test" id="btn-voz-test">
+    🔊 Probar voz
+  </button>
+
+  <button class="btn-voz-test" id="btn-planificacion">
+    📅 Ver planificación 16 semanas
+  </button>
+
+  <!-- ============================================================
+       BOTONES DE GESTIÓN
+       ============================================================ -->
+  <button class="btn-voz-test" id="btn-gestion-excel">
+    📊 Subir Excel del horario
+  </button>
+
+  <button class="btn-voz-test" id="btn-gestion-silabos">
+    📄 Gestionar Sílabos (PDF)
+  </button>
+
+  <button class="btn-voz-test" id="btn-checklist">
+    ✅ Check List
+  </button>
+
+  <!-- ============================================================
+       BOTÓN FLOTANTE: SISTEMA UTC
+       ============================================================ -->
+  <button class="btn-sistema-utc" id="btn-sistema-utc">
+    🌐<br>Sistema<br>UTC
+  </button>
+
+  <!-- ============================================================
+       MODAL: DETALLE DE CLASE
+       ============================================================ -->
+  <div id="modal-clase" class="modal-overlay" style="display:none;">
+    <div class="modal-contenido">
+      <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
+      <div id="modal-info"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: PLANIFICACIÓN 16 SEMANAS
+       ============================================================ -->
+  <div id="modal-planificacion" class="modal-overlay" style="display:none;">
+    <div class="modal-contenido modal-grande">
+      <button class="modal-cerrar" onclick="cerrarPlanificacion()">✕</button>
+      <h2>📅 Planificación 16 semanas</h2>
+      <p class="modal-subtitulo">12 oct 2026 → 31 ene 2027</p>
+      <div id="planificacion-contenido"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: SUBIR EXCEL
+       ============================================================ -->
+  <div id="modal-excel" class="modal-overlay" style="display:none;">
+    <div class="modal-contenido">
+      <button class="modal-cerrar" onclick="cerrarModalExcel()">✕</button>
+      <h2>📊 Subir Excel del Horario</h2>
+      <p class="modal-subtitulo">Selecciona el archivo Excel con tu horario semanal</p>
+
+      <div class="upload-area">
+        <input type="file" id="input-excel" accept=".xlsx,.xls" style="display:none;">
+        <label for="input-excel" class="upload-btn">
+          📂 Seleccionar archivo Excel
+        </label>
+        <p class="upload-hint">Formatos aceptados: .xlsx, .xls (máx 5 MB)</p>
+      </div>
+
+      <div id="excel-uploaded-info" style="display:none;">
+        <div class="upload-success">
+          <div>✅ <strong id="excel-nombre"></strong></div>
+          <div class="upload-fecha" id="excel-fecha"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: SÍLABOS
+       ============================================================ -->
+  <div id="modal-silabos" class="modal-overlay" style="display:none;">
+    <div class="modal-contenido modal-grande">
+      <button class="modal-cerrar" onclick="cerrarModalSilabos()">✕</button>
+      <h2>📄 Sílabos (PDF)</h2>
+      <p class="modal-subtitulo" id="resumen-silabos">0 de 3 sílabos subidos</p>
+      <div id="lista-silabos" class="lista-silabos"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: CHECK LIST
+       ============================================================ -->
+  <div id="modal-checklist" class="modal-overlay" style="display:none;">
+    <div class="modal-contenido modal-grande">
+      <button class="modal-cerrar" onclick="cerrarModalChecklist()">✕</button>
+      <h2>✅ Check List General</h2>
+      <p class="modal-subtitulo">Estado general de la documentación</p>
+      <div class="checklist-contenido" id="checklist-contenido"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: SISTEMA UTC (WEBVIEW)
+       ============================================================ -->
+  <div id="modal-sistema" class="modal-overlay" style="display:none;">
+    <div class="modal-sistema-contenido">
+      <div class="modal-sistema-header">
+        <span>🌐 Sistema Académico UTC</span>
+        <button onclick="cerrarSistema()" class="modal-cerrar-x">✕</button>
+      </div>
+      <iframe
+        id="iframe-sistema"
+        src="about:blank"
+        class="iframe-sistema"
+        allow="camera; microphone; geolocation"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="planificacion.js"></script>
+  <script src="gestion.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

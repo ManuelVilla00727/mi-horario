@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a202c">
+    <title>Mi Horario</title>
+  <script type="module" crossorigin src="/assets/index.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index.css">
+</head>
+<body>
+
+<header class="app-header">
+    <div class="header-info">
+        <h1>📚 Mi Horario</h1>
+        <p id="infoDocente">VILLA QUISHPE MANUEL WILLIAM</p>
+    </div>
+    <div class="header-actions">
+        <span id="relojActual" class="reloj">--:--:--</span>
+    </div>
+</header>
+
+<main class="app-main">
+    <section class="controles" id="controles"></section>
+
+    <nav class="tabs">
+        <button class="tab active" data-vista="horario">📅 Horario</button>
+        <button class="tab" data-vista="planificacion">📚 Planificación</button>
+    </nav>
+
+    <section class="tabla-container" id="vistaHorario">
+        <div id="tablaHorario"></div>
+    </section>
+
+    <section class="planificacion-container hidden" id="vistaPlanificacion">
+        <div id="planificacionSemanal"></div>
+    </section>
+</main>
+
+<div id="contenedorModal"></div>
+
+<!-- ⭐ BOTÓN FLOTANTE DEL ASISTENTE IA - FIX DEFINITIVO ⭐ -->
+<button id="btn-asistente-ia" class="btn-asistente-ia" title="Asistente IA"
+        style="position: fixed; bottom: 100px; right: 20px; width: 70px; height: 70px; 
+               border-radius: 50%; background: linear-gradient(135deg, #7b1fa2, #4a148c); 
+               color: white; border: none; font-size: 11px; font-weight: bold; 
+               box-shadow: 0 4px 16px rgba(123, 31, 162, 0.6); cursor: pointer; 
+               z-index: 99999; display: flex; align-items: center; justify-content: center; 
+               text-align: center; line-height: 1.2; padding: 4px; font-family: sans-serif;">
+    🤖<br>IA
+</button>
+
+
+</body>
+</html>
